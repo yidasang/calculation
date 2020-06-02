@@ -1,4 +1,4 @@
-function calendar() { //获取时间：今天, 本周, 本月, 上月
+function calendar() { //获取时间：今天, 本周, 上周, 本月, 上月
     var now = new Date();
 
     //今天
@@ -12,6 +12,13 @@ function calendar() { //获取时间：今天, 本周, 本月, 上月
     var sunday = new Date(monday.getTime() + (6 * millisecond));
     var sWeek = formatDate(monday);
     var eWeek = formatDate(sunday);
+
+    //上周
+    var lastSecond = 1000 * 60 * 60 * 24 * 7; //7天
+    var lastMonday = new Date(now.getTime() - (minusDay * millisecond) - lastSecond);
+    var lastSunday = new Date(monday.getTime() + (6 * millisecond) - lastSecond);
+    var sLastWeek = formatDate(lastMonday);
+    var eLastWeek = formatDate(lastSunday);
     
     //本月
     var currentMonth = now.getMonth();
@@ -49,6 +56,7 @@ function calendar() { //获取时间：今天, 本周, 本月, 上月
     return {
         today: [sToday, eToday],
         week: [sWeek, eWeek],
+        lastWeek: [sLastWeek, eLastWeek],
         month: [sMonth, eMonth],
         lastMonth: [sLastMonth, eLastMonth]
     };
