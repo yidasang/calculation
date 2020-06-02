@@ -11,7 +11,7 @@ function calculation(type, n, m) {
     } else if (type == "%") { //取余
         result =  n % m;
     }
-    return Math.round(result); //四舍五入, 取整
+    return Math.round(result); //四舍五入取整
 }
 
 module.exports = {
